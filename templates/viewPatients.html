@@ -1,0 +1,92 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<style>
+    body{
+    
+    /* background-color:#ff666f; */
+    background-image: url("{% static 'images/images.jpg'%}");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.container{
+    opacity: 80%;
+}
+</style>
+
+    </head>
+    <body>
+        {% csrf_token %}     
+        {% block content %}
+        <br/>
+        <br/>
+
+        <br/>
+
+        <br/>
+        <br/>
+
+        <div class="container">
+           
+                         <div><a type="button"  href="adminHome" class="btn btn-primary badge-pill float-right" style="width:100px;">Back</a>
+                            <a type="button"  href="addPatient" class="btn btn-danger badge-pill float-right" style="width:100px;">Add</a>
+                            
+                            <br/></div>
+                         <br/>
+               
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                <th scope="col">Patient id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Patient Details</th>
+                                <th scope="col">Heart Disease Status</th>
+                                <th scope="col">Heart Disease Status</th>
+                                
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                                {% for stud in patients %}
+                                <tr>
+                                    <td>{{stud.patientid}}</td>
+                                    <td>{{stud.name}}</td>
+                                    <td>{{stud.age}}</td>
+                                    <td>
+                                        <form action="{% url 'patientdetails' stud.patientid %}" method="get">   
+                                            <button class="btn btn-primary badge-pill" type="submit" style="width:80px;">Patient Details</button></td>
+                                        </form> 
+
+
+                                    </td>
+                                       
+                                    <td>{{stud.status}}</td>
+
+                                    <td>
+                                        <form action="{% url 'prediction' stud.patientid %}" method="get">   
+                                            <button class="btn btn-primary badge-pill" type="submit" style="width:80px;">Predict</button></td>
+                                        </form> 
+
+
+                                    </td>
+                                   
+                                          
+                                    
+                                       
+                                </tr>
+                                {% endfor %}   
+                            </tbody>
+
+                        </table>
+                        {% endblock content %}
+
+        </div>
+    </body>
+</html>

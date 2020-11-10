@@ -1,0 +1,199 @@
+{% load static %}
+{% static "images" as baseUrl %}
+{% load widget_tweaks%}
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+        @import url(http://fonts.googleapis.com/css?family=Raleway);
+body{
+    
+    /* background-color:#ff666f; */
+    background-image: url("{% static 'images/images.jpg'%}");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+a{
+    
+    color:#fff !important;
+    
+}
+.nav-item {
+    font-family: Century Gothic;
+    margin: 0 auto;
+    padding: 5em 3em;
+    text-align: center;
+}
+.nav-item a {
+    color: #FFF;
+    text-decoration: none;
+    font: 20px Century Gothic;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+}
+#ui{
+  		background-color: #333;
+  		padding: 30px;
+  		margin-top:50px;
+  		border-radius: 10px;
+  		opacity: 0.7;
+  		
+
+
+  	}
+  	#ui label{
+  		color: #fff;
+
+  	}
+
+/* Top & Bottom Borders Out */
+
+
+        </style>
+    </head>
+    <body>
+        <!-- <nav class="menum navbar navbar-light navbar-expand-md justify-content-center fixed-top">
+            <div class="container">
+
+            <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+              <ul class="topBotomBordersOut navbar-nav mx-auto text-center">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home</a>
+                </li>
+                
+                <li class="nav-item"> <a class="nav-link" href="addStudent">Add Student</a> 
+                <li class="nav-item"> <a class="nav-link" href="#">Prediction</a> 
+                
+                </li>
+              </ul>
+            </div>
+            </div>   
+          </nav> -->
+        
+          <!-- <div class="container"> -->
+            {% csrf_token %}     
+            {% block content %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="ui">
+                            <form class="form-group" method="get" action="insert">
+                            <div class="row text-center">
+                                <div class="col-lg-12">
+                                    <label>Name:</label>
+                                    {{form.name|add_class:"form-control"}}
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-lg-12">
+                                    <label>Chest Pain Type</label>
+                                    {{form.cp|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                <div class="col-lg-12">
+                                    <label>Resting Blood Sugar</label>
+                                    {{form.trestbps|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Serum Cholestrol</label>
+                                    {{form.chol|add_class:"form-control"}}
+                                </div>
+                                
+                            </div>
+                             <div class="row text-center">
+                               
+                                <div class="col-lg-12">
+                                    <label>Fasting Blood Sugar</label>
+                                    {{form.fbs|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                             <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Resting Electrocardio graph Results</label>
+                                    {{form.restecg|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                             <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Maximum heartrate</label>
+                                    {{form.thalach|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Exercise induced Angina</label>
+                                    {{form.exang|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>ST Depression induced by exercise relative to rest</label>
+                                    {{form.oldpeak|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Slope of the peak exercise relative to rest</label>
+                                    {{form.slope|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Number of major vessels colored by fluoroscopy</label>
+                                    {{form.ca|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            <div class="row text-center">
+                                
+                                <div class="col-lg-12">
+                                    <label>Thal</label>
+                                    {{form.thal|add_class:"form-control"}}
+                                </div>
+                                
+                            </div> 
+                            
+                           
+                            <br>
+                            <!-- <input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg"> -->
+        
+                            <a type="button"  href="/viewPatients"  class="btn btn-primary btn-block btn-lg">
+                                Back</a>
+
+                                                </form>
+                        </div>
+                    </div>
+                </div>
+       
+            </div>
+        
+            {% endblock%}
+                        
+    </body>
+</html>

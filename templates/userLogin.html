@@ -1,0 +1,140 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+        @import url(http://fonts.googleapis.com/css?family=Raleway);
+body{
+    
+    /* background-color:#ff666f; */
+    background-image: url("{% static 'images/images.jpg'%}");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+a{
+    
+    color:#fff !important;
+    
+}
+.nav-item {
+    font-family: Century Gothic;
+    margin: 0 auto;
+    padding: 5em 3em;
+    text-align: center;
+}
+.nav-item a {
+    color: #FFF;
+    text-decoration: none;
+    font: 20px Century Gothic;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+}
+/* Top & Bottom Borders Out */
+.topBotomBordersOut a:before, .topBotomBordersOut a:after {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background: #FFF;
+    content:"";
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.topBotomBordersOut a:before {
+    top: 0px;
+    transform: translateY(10px);
+}
+.topBotomBordersOut a:after {
+    bottom: 0px;
+    transform: translateY(-10px);
+}
+.topBotomBordersOut a:hover:before, .topBotomBordersOut a:hover:after {
+    opacity: 1;
+    transform: translateY(0px);
+}
+#login .container #login-row #login-column .login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  /* background-image: linear-gradient(to bottom, #aec1c3, #a9b5b7, #bcc5c6, #cfd5d5, #e3e5e5); */
+  background-color: whitesmoke;
+}
+#login .container #login-row #login-column .login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column .login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+        </style>
+    </head>
+    <body>
+            <div class="container">   
+        <!-- <nav class="menum navbar navbar-light navbar-expand-md justify-content-center fixed-top">
+             
+
+            <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+              <ul class="topBotomBordersOut navbar-nav mx-auto text-center">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home</a>
+                </li>
+                
+                <li class="nav-item"> <a class="nav-link" href="#">Admin</a> 
+                <li class="nav-item"> <a class="nav-link" href="#">Student</a> 
+                
+                </li>
+              </ul>
+            </div>
+            </div>   
+          </nav>
+        
+            -->
+            
+                    
+            </div>
+            <br/><br/><br/>
+            <div id="login">
+                    
+                    <div class="container">
+                        
+                        <div id="login-row" class="row justify-content-center align-items-center">
+                            <div id="login-column" class="col-md-6">
+                                <div class="login-box col-md-12">
+                                    
+                                    
+                                    <form id="login-form" class="form" action="userlogindao" method="post">
+                                        {% csrf_token %}
+                                        <h3 class="text-center text-info">Patient Login</h3>
+                                        <div class="form-group">
+                                            <label for="username" class="text-info">Username:</label><br>
+                                            <input type="text" name="username" id="username" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="text-info">Password:</label><br>
+                                            <input type="password" name="password" id="password" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
+                                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                                            <a type="button" name="back" href="home"  class="btn btn-info btn-md" >Back</a>
+             
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      
+    </body>
+</html>
